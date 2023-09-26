@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lo_que_cuesta_sumar", "Lo_q
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unidad_Curiosa_de_Monitorizacion", "Unidad_Curiosa_de_Monitorizacion\Unidad_Curiosa_de_Monitorizacion.vcxproj", "{F38C7261-38B8-4AC6-B6BC-4C2CE1112F75}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k-esimo_menor_elemento", "k-esimo_menor_elemento\k-esimo_menor_elemento.vcxproj", "{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{F38C7261-38B8-4AC6-B6BC-4C2CE1112F75}.Release|x64.Build.0 = Release|x64
 		{F38C7261-38B8-4AC6-B6BC-4C2CE1112F75}.Release|x86.ActiveCfg = Release|Win32
 		{F38C7261-38B8-4AC6-B6BC-4C2CE1112F75}.Release|x86.Build.0 = Release|Win32
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Debug|x64.ActiveCfg = Debug|x64
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Debug|x64.Build.0 = Debug|x64
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Debug|x86.Build.0 = Debug|Win32
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Release|x64.ActiveCfg = Release|x64
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Release|x64.Build.0 = Release|x64
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Release|x86.ActiveCfg = Release|Win32
+		{ED3BED06-4A44-44A1-BAAA-4368C903C4AE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

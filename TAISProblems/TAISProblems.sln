@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Volando_drones", "Volando_d
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tridente_de_temas_candentes", "Tridente_de_temas_candentes\Tridente_de_temas_candentes.vcxproj", "{1CEED807-1B2C-495C-B03F-05A7223C921E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Peaje_a_la_sombra", "Peaje_a_la_sombra\Peaje_a_la_sombra.vcxproj", "{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -121,6 +123,14 @@ Global
 		{1CEED807-1B2C-495C-B03F-05A7223C921E}.Release|x64.Build.0 = Release|x64
 		{1CEED807-1B2C-495C-B03F-05A7223C921E}.Release|x86.ActiveCfg = Release|Win32
 		{1CEED807-1B2C-495C-B03F-05A7223C921E}.Release|x86.Build.0 = Release|Win32
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Debug|x64.ActiveCfg = Debug|x64
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Debug|x64.Build.0 = Debug|x64
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Debug|x86.ActiveCfg = Debug|Win32
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Debug|x86.Build.0 = Debug|Win32
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x64.ActiveCfg = Release|x64
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x64.Build.0 = Release|x64
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x86.ActiveCfg = Release|Win32
+		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

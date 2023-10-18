@@ -9,10 +9,10 @@
 #include <fstream>
 #include <string>
 #include <queue>
-#include <unordered_map>
+#include <climits>
 using namespace std;
 
-//#include "IndexPQ.h"  // propios o los de las estructuras de datos de clase
+#include "IndexPQ.h"  // propios o los de las estructuras de datos de clase
 
 /*@ <answer>
 
@@ -27,14 +27,27 @@ using namespace std;
  // Escribe el código completo de tu solución aquí debajo
  // ================================================================
  //@ <answer>
-struct Evento {
-    string tipo, tema;
+struct Tema {
+    string tema;
     int citas, actualizado;
+
+    bool operator<(Tema const& b) const {
+        return this->citas > b.citas || (this->citas == b.citas && this->actualizado > b.actualizado);
+    }
+
+    void operator-=(Tema const& b) {
+        this->actualizado = b.actualizado;
+        this->citas -= b.citas;
+        //return this->citas - b.citas;
+    }
+    void operator+=(Tema const& b) {
+        this->actualizado = b.actualizado;
+        this->citas += b.citas;
+    }
 };
 
-bool operator<(Evento const& a, Evento const& b) {
-    return a.citas < b.citas || (a.citas == b.citas && a.actualizado < b.actualizado);
-}
+
+
 
 bool resuelveCaso() {
 
@@ -43,73 +56,38 @@ bool resuelveCaso() {
     cin >> n;
     if (!std::cin)  // fin de la entrada
         return false;
-    //IndexPQ<Evento> q(n);
-    priority_queue<Evento> q, q2;
+    IndexPQ<string, Tema> q;
     for (int i = 0; i < n; i++) {
-        Evento e;
-        cin >> e.tipo;
-        e.actualizado = i;
-        if (e.tipo == "C") {
-            cin >> e.tema >> e.citas;
-            bool inserted = false;
-            while (!q.empty() && !inserted) {
-                Evento aux = q.top(); q.pop();
-                if (aux.tema == e.tema) {
-                    aux.citas += e.citas;
-                    aux.actualizado = i;
-                    q.push(aux);
-                    inserted = true;
-                }
-                else {
-                    q2.push(aux);
-                }
-            }
-            while (!q2.empty()) {
-                Evento e = q2.top(); q2.pop();
-                q.push(e);
-            }
-            if (!inserted) {
-                q.push(e);
-            }
+        string evento;
+        cin >> evento;
+        if (evento == "C") {//aumentan citas
+            Tema t;
+            cin >> t.tema >> t.citas;
+            t.actualizado = i;
+            q.update(t.tema, t);
         }
-        else if (e.tipo == "E") {
-            cin >> e.tema >> e.citas;
-            bool inserted = false;
-            while (!q.empty() && !inserted) {
-                Evento aux = q.top(); q.pop();
-                if (aux.tema == e.tema) {
-                    aux.citas -= e.citas;
-                    aux.actualizado = i;
-                    q.push(aux);
-                    inserted = true;
-                }
-                else {
-                    q2.push(aux);
-                }
-            }
-            while (!q2.empty()) {
-                Evento e = q2.top(); q2.pop();
-                q.push(e);
-            }
-            if (!inserted) {
-                q.push(e);
-            }
+        else if (evento == "E") {//expiran citas
+            Tema t;
+            cin >> t.tema >> t.citas;
+            t.actualizado = i;
+            q.update(t.tema, t, false);
         }
-        else {
-            if (!q.empty()) {
-                int qOrigSize = q.size();
-                for (int i = 0; i < 3 && i < qOrigSize; i++) {
-                    Evento e = q.top(); q.pop();
-                    q2.push(e);
-                    cout << i + 1 << " " << e.tema << "\n";
-                }
+        else if (evento == "TC") {
+            int qSize = q.size();
+            IndexPQ<string, Tema> q2;
+            for (int i = 0; i < 3 && i < qSize; i++) {
+                Tema t = q.top().prioridad;
+                cout << i + 1 << " " << t.tema << "\n";
+                q.pop();
+                q2.push(t.tema, t);
             }
             while (!q2.empty()) {
-                Evento e = q2.top(); q2.pop();
-                q.push(e);
+                q.push(q2.top().elem, q2.top().prioridad);
+                q2.pop();
             }
         }
     }
+    
     cout << "---\n";
 
     return true;

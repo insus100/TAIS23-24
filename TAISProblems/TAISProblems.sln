@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tridente_de_temas_candentes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Peaje_a_la_sombra", "Peaje_a_la_sombra\Peaje_a_la_sombra.vcxproj", "{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Recorriendo el archipiélago en bicicleta", "Recorriendo el archipiélago en bicicleta\Recorriendo el archipiélago en bicicleta.vcxproj", "{FD81C014-864E-4839-89AE-6D2F477D9477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -131,6 +133,14 @@ Global
 		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x64.Build.0 = Release|x64
 		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x86.ActiveCfg = Release|Win32
 		{A1A37D22-F81B-4678-8A4A-9FEEECDEAB97}.Release|x86.Build.0 = Release|Win32
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Debug|x64.ActiveCfg = Debug|x64
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Debug|x64.Build.0 = Debug|x64
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Debug|x86.ActiveCfg = Debug|Win32
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Debug|x86.Build.0 = Debug|Win32
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Release|x64.ActiveCfg = Release|x64
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Release|x64.Build.0 = Release|x64
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Release|x86.ActiveCfg = Release|Win32
+		{FD81C014-864E-4839-89AE-6D2F477D9477}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,8 +34,8 @@ struct Candidatura {
     lli votos, escanios, indice;//indice para ver el orden de la entrada
 };
 bool operator<(Candidatura const& a, Candidatura const& b) {
-    lli ca = a.votos / (1 + a.escanios);//coeficiente de candidatura a
-    lli cb = b.votos / (1 + b.escanios);//coeficiente de candidatura b
+    double ca = a.votos / (1.0 + a.escanios);//coeficiente de candidatura a
+    double cb = b.votos / (1.0 + b.escanios);//coeficiente de candidatura b
     if (ca == cb) {
         if (a.votos == b.votos) return a.indice > b.indice;
         else return a.votos < b.votos;

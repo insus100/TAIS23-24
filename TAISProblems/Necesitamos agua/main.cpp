@@ -75,7 +75,7 @@ bool resuelveCaso() {
     int p1, p2, c;
     for (int i = 0; i < M; i++) {
         cin >> p1 >> p2 >> c;
-        g.ponArista({ p1 - 1, p2 - 1, c * 2 });
+        g.ponArista({ p1 - 1, p2 - 1, c });
         //g.ponArista({ p2 - 1, p1 - 1, coste });
     }
     Dijsktra<int> plantaA(g, 0);
@@ -84,19 +84,19 @@ bool resuelveCaso() {
     for (int i = 1; i < N - 1; i++) {
         if (plantaA.hayCamino(i) && plantaB.hayCamino(i)) {
             if (plantaA.distancia(i) < plantaB.distancia(i)) {
-                coste += plantaA.distancia(i);
+                coste += plantaA.distancia(i) * 2;
             }
-            else coste += plantaB.distancia(i);
+            else coste += plantaB.distancia(i) * 2;
         }
         else {
-            if (plantaA.hayCamino(i)) coste += plantaA.distancia(i);
-            else if (plantaB.hayCamino(i)) coste += plantaB.distancia(i);
+            if (plantaA.hayCamino(i)) coste += plantaA.distancia(i) * 2;
+            else if (plantaB.hayCamino(i)) coste += plantaB.distancia(i) * 2;
         }
     }
     // resolver el caso posiblemente llamando a otras funciones
 
     // escribir la solución
-    cout << coste * camiones << "\n";
+    cout << coste * camiones << " " << camiones << "\n";
     return true;
 }
 

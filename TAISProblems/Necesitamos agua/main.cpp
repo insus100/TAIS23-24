@@ -7,12 +7,13 @@
 
 #include <iostream>
 #include <fstream>
-//#include <deque>
+#include <deque>
 using namespace std;
 
 #include "ConjuntosDisjuntos.h"
 #include "IndexPQ.h"
 #include "DigrafoValorado.h"
+using Camino = deque<AristaDirigida<int>>;
 /*@ <answer>
 
  Escribe aquí un comentario general sobre la solución, explicando cómo
@@ -28,28 +29,36 @@ using namespace std;
  //@ <answer>
 
 template <typename Valor>
-class Dijsktra {
+class Dijkstra {
 public:
-    Dijsktra(DigrafoValorado<Valor> const& g, int S) : origen(S), dist(g.V(), INF), ulti(g.V()), pq(g.V()) {
+    Dijkstra(DigrafoValorado<Valor> const& g, int orig) : origen(orig),
+        dist(g.V(), INF), ulti(g.V()), pq(g.V()) {
         dist[origen] = 0;
         pq.push(origen, 0);
         while (!pq.empty()) {
             int v = pq.top().elem; pq.pop();
-            for (AristaDirigida<Valor> a : g.ady(v))
+            for (auto a : g.ady(v))
                 relajar(a);
         }
     }
     bool hayCamino(int v) const { return dist[v] != INF; }
     Valor distancia(int v) const { return dist[v]; }
+    Camino camino(int v) const {
+        Camino cam;
+        // recuperamos el camino retrocediendo
+        AristaDirigida<int> a;
+        for (a = ulti[v]; a.desde() != origen; a = ulti[a.desde()])
+            cam.push_front(a);
+        cam.push_front(a);
+        return cam;
+    }
 private:
     const Valor INF = std::numeric_limits<Valor>::max();
     int origen;
-    vector<Valor> dist;
-    vector<AristaDirigida<Valor>> ulti;
+    std::vector<Valor> dist;
+    std::vector<AristaDirigida<Valor>> ulti;
     IndexPQ<Valor> pq;
-
-
-    void relajar(AristaDirigida<Valor>& a) {
+    void relajar(AristaDirigida<Valor> a) {
         int v = a.desde(), w = a.hasta();
         if (dist[w] > dist[v] + a.valor()) {
             dist[w] = dist[v] + a.valor(); ulti[w] = a;
@@ -76,27 +85,73 @@ bool resuelveCaso() {
     for (int i = 0; i < M; i++) {
         cin >> p1 >> p2 >> c;
         g.ponArista({ p1 - 1, p2 - 1, c });
-        //g.ponArista({ p2 - 1, p1 - 1, coste });
+        g.ponArista({ p2 - 1, p1 - 1, c });
     }
-    Dijsktra<int> plantaA(g, 0);
-    Dijsktra<int> plantaB(g, N-1);
-    int coste = 0;
+    Dijkstra<int> plantaA(g, 0);
+    Dijkstra<int> plantaB(g, N-1);
+    vector<bool> sumado(N, false);
+    int coste = 0, camionesA = camiones / 2, camionesB = camiones / 2;
     for (int i = 1; i < N - 1; i++) {
+        if (sumado[i]) continue;
         if (plantaA.hayCamino(i) && plantaB.hayCamino(i)) {
-            if (plantaA.distancia(i) < plantaB.distancia(i)) {
-                coste += plantaA.distancia(i) * 2;
+            if (plantaA.distancia(i) < plantaB.distancia(i) && camionesA > 0) {
+                Camino c = plantaA.camino(i);
+                for (AristaDirigida<int> const& a : c) {
+                    if (!sumado[a.hasta()]) {
+                        sumado[a.hasta()] = true;
+                        sumado[a.desde()] = true;
+                        coste += a.valor() * 2;
+                    }
+                    else camionesA++;
+                }
+                //coste += plantaA.distancia(i) * 2;
+                camionesA--;
+                
             }
-            else coste += plantaB.distancia(i) * 2;
+            else if(camionesB > 0) {
+                Camino c = plantaB.camino(i);
+                for (AristaDirigida<int> const& a : c) {
+                    if (!sumado[a.hasta()]) {
+                        sumado[a.hasta()] = true;
+                        sumado[a.desde()] = true;
+                        coste += a.valor() * 2;
+                    }
+                    else camionesB++;
+                }
+                camionesB--;
+            }
         }
         else {
-            if (plantaA.hayCamino(i)) coste += plantaA.distancia(i) * 2;
-            else if (plantaB.hayCamino(i)) coste += plantaB.distancia(i) * 2;
+            if (plantaA.hayCamino(i) && camionesA > 0) {
+                Camino c = plantaA.camino(i);
+                for (AristaDirigida<int> const& a : c) {
+                    if (!sumado[a.hasta()]) {
+                        sumado[a.hasta()] = true;
+                        sumado[a.desde()] = true;
+                        coste += a.valor() * 2;
+                    }
+                    else camionesA++;
+                }
+                camionesA--;
+            }
+            else if (plantaB.hayCamino(i) && camionesB > 0) {
+                Camino c = plantaB.camino(i);
+                for (AristaDirigida<int> const& a : c) {
+                    if (!sumado[a.hasta()]) {
+                        sumado[a.hasta()] = true;
+                        sumado[a.desde()] = true;
+                        coste += a.valor() * 2;
+                    }
+                    else camionesB++;
+                }
+                camionesB--;
+            }
         }
     }
     // resolver el caso posiblemente llamando a otras funciones
 
     // escribir la solución
-    cout << coste * camiones << " " << camiones << "\n";
+    cout << coste << " " << camiones << "\n";
     return true;
 }
 

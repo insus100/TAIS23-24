@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "La venganza del quiosquero"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Necesitamos agua", "Necesitamos agua\Necesitamos agua.vcxproj", "{D647FE67-6396-4DCE-9712-D1A925121353}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PD I Abajo o a la derecha", "PD I Abajo o a la derecha\PD I Abajo o a la derecha.vcxproj", "{8B87113E-C924-43C8-A49A-620E94A2BD5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -201,6 +203,14 @@ Global
 		{D647FE67-6396-4DCE-9712-D1A925121353}.Release|x64.Build.0 = Release|x64
 		{D647FE67-6396-4DCE-9712-D1A925121353}.Release|x86.ActiveCfg = Release|Win32
 		{D647FE67-6396-4DCE-9712-D1A925121353}.Release|x86.Build.0 = Release|Win32
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Debug|x64.ActiveCfg = Debug|x64
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Debug|x64.Build.0 = Debug|x64
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Debug|x86.Build.0 = Debug|Win32
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Release|x64.ActiveCfg = Release|x64
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Release|x64.Build.0 = Release|x64
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Release|x86.ActiveCfg = Release|Win32
+		{8B87113E-C924-43C8-A49A-620E94A2BD5F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
